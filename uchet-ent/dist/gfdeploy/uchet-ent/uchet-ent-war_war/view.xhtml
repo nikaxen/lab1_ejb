@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+        <table cellspacing='0'>
+                        <tr>
+                            <td>id_user</td>
+                            <td>fio</td>
+                            <td>email</td>
+                            <td>password</td>
+                            <td>rolename</td>
+                            <td>details</td>
+                        </tr>
+            <ui:repeat var="user" value="#{userBean.allUsers}">  
+                            <tr>
+                                <td>#{user.id_user}</td>
+                                <td>#{user.fio}</td>
+                                <td>#{user.email}</td>
+                                <td>#{user.password}</td>
+                                <td>#{user.rolename}</td>
+                                <td><h:commandButton action="#{sessionBean.setSelected(user.id_user)}" value="выбрать"></h:commandButton></td>
+                            </tr>       
+                        </ui:repeat>
+            
+        </table></h:form>
+        <br/>Количество обращений к странице #{sessionBean.number}<br/>
+        <br/><br/><br/><br/>
+            <h1>NEW USER</h1>
+             <h:form>
+                <h:outputText value="ФИО:"/><br/>
+                <h:inputText value="#{userBean.fio}"/><br/><br/>
+                <h:outputText value="Email:"/><br/>
+                <h:inputText value="#{userBean.email}" id="email">
+                    <f:validateRegex pattern="([^.@]+)(\.[^.@]+)*@([^.@]+\.)+([^.@]+)"/>
+                </h:inputText><h:message for="email" styleClass="form_error" lang="ru"/><br/><br/>
+                <h:outputText value="Пароль:"/><br/>
+                <h:inputSecret value="#{userBean.password}"/><br/><br/>
+                <h:commandButton value="Зарегистрироваться" action="#{userBean.AddNewUser()}"/>
+            </h:form>
+    </h:body>
+</html>
+
