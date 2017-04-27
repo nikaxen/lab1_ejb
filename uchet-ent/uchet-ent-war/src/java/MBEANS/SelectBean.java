@@ -21,6 +21,7 @@ import javax.interceptor.Interceptors;
 @Stateful
 @Named(value="selectBean")
 @ConversationScoped
+
 public class SelectBean implements ISelectBean, Serializable{
 
     @Inject
@@ -29,7 +30,7 @@ public class SelectBean implements ISelectBean, Serializable{
     private DAO.DAORemote dao;
     private MODELS.User selectedUser;
     
-
+    
     @Override
     public void setSelected(int id) {
         if(conv.isTransient()){
@@ -48,6 +49,11 @@ public class SelectBean implements ISelectBean, Serializable{
     @Interceptors(Single.class)
     public MODELS.User getSelectedUser() {
         return selectedUser;
+    }
+    
+    @Override
+    public String ReloadPage(){
+        return "";
     }
     
 }

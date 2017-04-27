@@ -7,4 +7,5 @@ import javax.ejb.Local;
 public interface ISelectBean {
     public MODELS.User getSelectedUser();
     public void setSelected(int id);
+    public String ReloadPage();
 }

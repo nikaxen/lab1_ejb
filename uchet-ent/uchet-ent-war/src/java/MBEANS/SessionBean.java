@@ -1,6 +1,7 @@
 
 package MBEANS;
 
+import Singleton.Single;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
